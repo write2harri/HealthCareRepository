@@ -18,12 +18,16 @@ public class InsuranceController {
 	
 	@RequestMapping("/healthinsurance/{policyNumber}")
 	public ResponseEntity<?> getInsurance(@PathVariable("policyNumber") int policyNumber) {
+				System.out.println("Inside getInsurance");
+
 		JSONObject restrictedInsurancePolicy =  es.getRestrictedInsurance(policyNumber);
 		return new ResponseEntity<>(restrictedInsurancePolicy, HttpStatus.OK);
 	}
 	
 	@RequestMapping("/healthinsurance/{policyNumber}/treatment/{treatmentid}")
 	public ResponseEntity<?> getTreatmentDetails(@PathVariable("policyNumber") int policyNumber, @PathVariable("treatmentid") String treatmentid) {
+				System.out.println("Inside getTreatmentDetails");
+
 		JSONObject treatmentDetails = es.getTreatmentDetails(policyNumber, treatmentid);
 		return new ResponseEntity<>(treatmentDetails, HttpStatus.OK);
 	}	
